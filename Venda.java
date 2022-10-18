@@ -76,10 +76,10 @@ public class Venda {
     }
 
     public void imprimir(){
-        System.out.println("CÓD Vendedor: "+ this.vendedor.getCodigo());
+        System.out.println("COD Vendedor: "+ this.vendedor.getCodigo());
         System.out.println("Vendedor: " + this.vendedor.getNome());
         System.out.println("Comissão: " + this.vendedor.getComissao() + " %");
-        System.out.println("CÓD Produto: "+ this.produto.getCodigo());
+        System.out.println("COD Produto: "+ this.produto.getCodigo());
         System.out.println("Descrição Produto: "+ this.produto.getDescricao());
         System.out.println("QTD Itens: "+ quantidadeItens);
         System.out.println("Valor Venda: R$ "+ this.produto.getValorVenda());

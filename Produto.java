@@ -8,7 +8,7 @@ public class Produto {
     public float valorCusto;
     public boolean promocao;
 
-    public Produto() {
+    public Produto(int codigo, String descricao, float valorVenda, float valorCusto, boolean promocao) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.valorVenda = valorVenda;
@@ -16,7 +16,8 @@ public class Produto {
         this.promocao = promocao;
     }
 
-    public Produto(int codigo, String descricao, float valorVenda, float valorCusto, boolean promocao) {
+    public boolean getPromocao() {
+        return promocao;
     }
 
     public int getCodigo() {
@@ -51,7 +52,7 @@ public class Produto {
         this.valorCusto = valorCusto;
     }
 
-    public boolean getPromocao() {
+    public boolean isPromocao() {
         return promocao;
     }
 

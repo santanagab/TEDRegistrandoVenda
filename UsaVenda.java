@@ -3,64 +3,48 @@ package RegistrandoVenda;
 public class UsaVenda {
 
     public static void main(String[] args) {
-        Produto produto_1 = new Produto(13, "Cerveja", 40, 30, false);
-
-        Vendedor vendedor_1 = new Vendedor("Machado", 98, 5, "Rua 1");
-        vendedor_1.setComissao(2f);
-
+        System.out.println("[VENDA 1]");
+        Produto produto = new Produto(13, "cerveja", 100.00f, 50.00f, false);
+        Vendedor vendedor_1 = new Vendedor("Alírio", 98, 5.00f, "Rua 1");
 
         Venda venda_1 = new Venda();
-        venda_1.setProduto(produto_1);
+        venda_1.setProduto(produto);
         venda_1.setVendedor(vendedor_1);
         venda_1.setQuantidadeItens(2);
-        venda_1.setDesconto(10f);
-
+        venda_1.setDesconto(0);
 
         float valorVenda_1 = venda_1.calcularValor();
         venda_1.setValor(valorVenda_1);
-        System.out.printf("Valor: R$ %.2f", valorVenda_1);
-
-        float valorComissao_1 = venda_1.calcularComissao();
-        System.out.printf("Comissão: R$ %.2f", valorComissao_1);
 
         venda_1.imprimir();
 
 
-        Produto produto_2 = new Produto(31, "fone de ouvido", 80, 100, true);
-
-        Vendedor novo_vendedor = new Vendedor("Alírio", 2, 5, "Rua 2");
+        System.out.println("[VENDA 2]");
+        Produto produto_2 = new Produto(27, "Camisa", 100.00f, 80.00f, true);
+        Vendedor vendedor_2 = new Vendedor("Machado", 76, 10f, "Rua 2");
 
         Venda venda_2 = new Venda();
         venda_2.setProduto(produto_2);
-        venda_2.setVendedor(novo_vendedor);
+        venda_2.setVendedor(vendedor_2);
         venda_2.setQuantidadeItens(3);
-        venda_2.setDesconto(10f);
+        venda_2.setDesconto(10);
 
         float valorVenda_2 = venda_2.calcularValor();
         venda_2.setValor(valorVenda_2);
-        System.out.printf("Valor: R$ %.2f", valorVenda_2);
-
-
-        float valorComissao_2 = venda_2.calcularValor();
-        System.out.printf("Comissão: R$ %.2f", valorComissao_2);
+        float valorComissao2 = venda_2.calcularValor();
 
         venda_2.imprimir();
 
 
+        System.out.println("[VENDA 3]");
         Venda venda_3 = new Venda();
         venda_3.setProduto(produto_2);
-        venda_3.setVendedor(novo_vendedor);
+        venda_3.setVendedor(vendedor_2);
         venda_3.setQuantidadeItens(2);
 
-        float valorDesconto = venda_3.efetuarDesconto();
-        System.out.printf("Valor com desconto: R$ " +valorDesconto);
-
-        float valorVenda_3 = venda_3.calcularValor();
-        venda_3.setValor(valorVenda_3);
-        System.out.printf("Comissão: R$ %.2f", valorVenda_3);
-
-        float valorComissao_3 = venda_3.calcularComissao();
-        System.out.printf("Comissão: R$ 2.f", valorComissao_3);
+        float valorVenda3 = venda_3.calcularValor();
+        venda_3.setValor(valorVenda3);
+        float valorComissao3 = venda_3.calcularComissao();
 
         venda_3.imprimir();
 

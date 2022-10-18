@@ -4,7 +4,7 @@ public class Venda {
 
     public Produto produto;
     public Vendedor vendedor;
-    public float desconto;
+    public int desconto;
     public int quantidadeItens;
     public float valor;
 
@@ -24,12 +24,12 @@ public class Venda {
         this.vendedor = vendedor;
     }
 
-    public double getDesconto() {
+    public int getDesconto() {
         return desconto;
     }
 
-    public void setDesconto(float desconto) {
-        this.desconto = desconto;
+    public void setDesconto(int desconto) {
+        this.desconto =  desconto;
     }
 
     public int getQuantidadeItens() {
@@ -49,43 +49,43 @@ public class Venda {
     }
 
     public float calcularValor() {
-        float valor = quantidadeItens * produto.getValorVenda();
+        float valor = quantidadeItens * produto.getValorVenda() - desconto;
         return valor;
     }
-    
-    public float efetuarDesconto() {
-        float valor_Desconto = produto.getValorVenda() * 100;
-        float valorProdutoDesconto = produto.getValorVenda() - valor_Desconto;
 
-        if (valorProdutoDesconto < produto.getValorCusto()) {
-            System.out.printf("Cupom de desconto não se aplica!");
-            return produto.getValorVenda();
-        }
-        return valorProdutoDesconto;
-
-    }
-    
     public float calcularComissao() {
-        float valorComissao = (float) (valor * vendedor.getComissao());
+        float valorComissao = valor * vendedor.getComissao();
 
-        if (produto.getPromocao()) {
+        if (this.produto.getPromocao()) {
             valorComissao = valorComissao / 2;
         }
         return valorComissao;
     }
 
-    public void imprimir(){
-        System.out.println("CÓD Vendedor: "+ vendedor.getCodigo());
-        System.out.println("Vendedor: " + vendedor.getNome());
-        System.out.println("Comissão: "+ vendedor.getComissao());
-        System.out.println("QTD itens: "+ quantidadeItens);
-        System.out.println("CÓD Produto: "+ produto.getCodigo());
-        System.out.println("Descrição Produto: "+produto.getDescricao());
-        System.out.println("Valor Produto: R$ "+ produto.getValorVenda());
-        System.out.println("Promoção: " + (produto.getPromocao() ? "SIM" : "NÃO"));
-        System.out.println("Valor Desconto: R$ "+ desconto);
-        System.out.println("Valor total: R$ "+ valor);
+    public  int efetuarDesconto(float desconto) {
+        int valorDesconto = (int) (produto.getValorVenda() * desconto / 100);
+        float valorProdutoDesconto = produto.getValorVenda() - valorDesconto;
+
+        if (valorProdutoDesconto < this.produto.getValorCusto()){
+            System.out.println("DESCONTO NÃO APLICADO");
+            System.out.println("Valor desconto é menor que o valor total");
+            return (int) produto.getValorVenda();
+        }
+        return (int) valorProdutoDesconto;
+
     }
 
+    public void imprimir(){
+        System.out.println("CÓD Vendedor: "+ this.vendedor.getCodigo());
+        System.out.println("Vendedor: " + this.vendedor.getNome());
+        System.out.println("Comissão: " + this.vendedor.getComissao() + " %");
+        System.out.println("CÓD Produto: "+ this.produto.getCodigo());
+        System.out.println("Descrição Produto: "+ this.produto.getDescricao());
+        System.out.println("QTD Itens: "+ quantidadeItens);
+        System.out.println("Valor Venda: R$ "+ this.produto.getValorVenda());
+        System.out.println("Promoção: " + (this.produto.getPromocao() ? "SIM" : "NÃO"));
+        System.out.println("Valor Desconto: " + desconto + " %");
+        System.out.println("Valor total: R$ "+ this.valor);
 
+    }
 }

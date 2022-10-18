@@ -7,14 +7,11 @@ public class Vendedor {
     public float comissao;
     public String endereco;
 
-    public Vendedor() {
+    public Vendedor(String nome, int codigo, float comissao, String endereco) {
         this.nome = nome;
         this.codigo = codigo;
         this.comissao = comissao;
         this.endereco = endereco;
-    }
-
-    public Vendedor(String nome, int codigo, float comissao, String endereco){
     }
 
     public String getNome() {
@@ -33,7 +30,7 @@ public class Vendedor {
         this.codigo = codigo;
     }
     
-    public double getComissao() {
+    public float getComissao() {
         return comissao;
     }
 
